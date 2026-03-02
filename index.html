@@ -7,13 +7,13 @@
     <meta name="keywords" content="business growth, strategic investment, mergers, corporate consulting, digital transformation">
     <meta name="author" content="Lauren Sanders">
     <title>Vaanguard | Leading the Future of Success</title>
-<!-- ADD LINK TO YOUR CSS-->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <!-- WRAP CONTENT IN VALIDATED, SEMANTIC HTML5 (SEE HINTS FOLDER LINKED TO IN THE CANVAS INSTRUCTIONS)-->
     <h1>Vaanguard</h1>
-        <h2>Navigation</h2>
+        <h2>Main Navigation</h2>
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -36,7 +36,7 @@
 
 
         <h2>What We Offer</h2>
-            <section id="services-grid">
+            <div id="services-grid">
                 <section id="consulting">
                     <h3>Strategic Growth Consulting</h3>
                     <p>Unlock new revenue streams and optimize market expansion strategies.</p>
@@ -61,13 +61,14 @@
                     <h3>Corporate Innovation</h3>
                     <p>Strategic implementation of new ideas, technologies, and processes to drive business growth, enhance competitive advantage, and adapt to evolving market demands.</p>
                 </section>
-            </section>
+            </div>
 
             <h2>Proven Results</h2>
             <p>Our data-driven strategies have delivered outstanding ROI, leading to significant revenue growth.</p>
 
-                <h3>Profits</h3>
+                
                 <section id="profit-table">
+                    <h3>Profits</h3>
                     <table>
                         <thead>
                             <tr>
@@ -106,6 +107,8 @@
                     </table>
                 </section>
 
+                
+                <section id="bar">
                 <h3>Growth</h3>
 <!-- CODE PROVIDED FOR YOU, NOTHING TO DO FOR THE BAR CHART IN THE HTML-->
                     <div  id="bar-chart">
@@ -115,21 +118,34 @@
                         <div class="bar" data-year="2023" style="--height: 85%;"></div>
                         <div class="bar" data-year="2024" style="--height: 100%;"></div>
                     </div>
-
+                </section>
         <h2>Contact Us</h2>
-        Want to take your business to the next level? Get in touch with our elite team today.
-
-            Full Name
-
-            Email Address
-
-            Company Name
-
-            Industry
-
-            How can we help you?
-
-            Submit
+        <p>Want to take your business to the next level? Get in touch with our elite team today.</p>
+        <form action="https://wp.zybooks.com/form-viewer.php" method="POST">
+            <p>
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name">
+            </p>
+            <p>
+                <label for="emailaddress">Email Address</label>
+                <input type="email" name="emailaddress" id="emailaddress">
+            </p>
+            <p>
+                <label for="company">Company Name</label>
+                <input type="text" name="company" id="company">
+            </p>
+            <p>
+                <label for="industry">Industry</label>
+                <input type="text" name="industry" id="industry">
+            </p> 
+            <p>
+                <label for="help">How can we help you?</label>
+                <textarea id="help" name="help" rows="2" cols="20"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
         </main>
         <footer>
             <p>For educational purposes only.<br>Email:
