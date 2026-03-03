@@ -72,11 +72,26 @@ body {
 
 header {
     background-color: var(--black);
-    padding: 2rem;
+    padding: 2.2rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+header::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 15px;
+    background: linear-gradient(to bottom, var(--blue), transparent);
+    z-index: -1;
 }
 
 .logo {
@@ -99,7 +114,7 @@ header {
 nav {
     max-height: 0;
     overflow: hidden;
-    width: 100%
+    width: 90%
 }
 
 #menu:checked ~ nav {
@@ -128,12 +143,15 @@ nav li a:hover{
 
 main > *:not(#innovation){
     padding: 2rem;
+    
 }
 
 h1 {
     color: var(--blue);
     position: relative;
     padding-left: 5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 /* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
@@ -165,11 +183,21 @@ h1::before {
     position:absolute;
     top: 50%;
     left:0.5rem;
-    transform: translate(0, -50%);
     width: 3.75rem;
     height: 3.75rem;
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
+    animation: floatfix 3s ease-in-out infinite;
 
+}
+
+@keyframes floatfix {
+    
+    0%,100% {
+        transform: translate(0, -10px);
+    }
+    50% {
+        transform: translate(0, -50px);
+    }
 }
 
 #innovation h2, #results h2, #contact h2 {
@@ -269,7 +297,19 @@ h3 {
 #results {
     background-color: var(--blue);
     color: var(--white);
+    
 }
+
+#results h2, #results p {
+    grid-column: 1/-1;
+}
+
+.results-container {
+    display: grid;
+    gap: 2rem;
+    
+}
+
 /* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
 .container {
     width: 90%;
@@ -282,6 +322,7 @@ table {
     font-size: 1rem;
     text-align: center;
     width: 100%;
+    max-width: 100%;
 }
 
 tr:nth-child(even) {
@@ -290,7 +331,7 @@ tr:nth-child(even) {
 
 th, td {
     border: 1px solid var(--charcoal);
-    padding: 1rem;
+    padding: .75rem .5rem;
 }
 
 /* THIS ONE IS DONE FOR YOU */
@@ -302,17 +343,17 @@ th, td {
     gap: 1rem;
     height: 300px;
     width: 100%;
-    max-width: 800px;
-    padding: 1rem;
+    max-width: 100%;
+    padding: 0.5rem;
     position: relative;
 }
 /* ADD ON TRANSITION ON HEIGHT */
 .bar {
-    width: 50px;
+    width: 40px;
     background: var(--charcoal);
     border-radius: 10px;
     position: relative;
-    transition: ;
+    transition: height 1s ease-in-out;
     height: 0;
 }
 /* THIS ONE IS DONE FOR YOU */
@@ -344,8 +385,8 @@ th, td {
 #contact {
     background: var(--black);
     color: var(--white);
-
 }
+
 #contact p {
     padding-bottom: 1rem;
     line-height: 1.5;
@@ -356,6 +397,11 @@ th, td {
     border: 2px solid var(--blue);
     padding: 1rem;
     box-sizing: border-box;
+}
+
+#contact formIn {
+    display: grid;
+    gap: 1rem;
 }
 
 #contact textarea {
@@ -382,21 +428,83 @@ th, td {
     background-color: var(--red);
     transform: scale(1.1);
 }
-/* MEDIA QUERIES (MEDIUM) */ 
 
-    #results {
+footer {
+    text-align: center;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 4rem;
+    line-height: 1.5;
+}
+
+footer a {
+    color: var(--blue);
+    text-decoration: none;
+}
+/* MEDIA QUERIES (MEDIUM) */ 
+    @media (min-width: 600px) {
+    
+    .menubutton {
+        display: none;
+    }
+    nav {
+        max-height: none;
+        overflow: visible;
+        width: auto;
+    }
+    nav ul {
+        display: flex;
+    }
+    nav li a {
+        padding: 0.5rem;
+        text-align: left;
+    }
+    header {
+        flex-wrap: nowrap;
+    }
+    
+    .results-container {
+        grid-template-columns: minmax(0, 1fr) minmax(0,1fr);
+        align-items: start;
+        
+    }
+    #results-table {
+        overflow-x: auto;
+        width: 100%;
+        max-width: 100%;
+        display: block;
+    }
+    #bar-chart {
+        width: 100%;
+        
+    }
+
+    #services-grid {
         grid-template-columns: 1fr 1fr;
     }
-    .results-container {
-        flex-direction: row;
-        justify-content: space-between;
     }
-    .results-table {
-        width: 50%;
-    }
-    .bar-chart {
-        width: 50%;
-    }
-
 
 /* MEDIA QUERIES (LARGE) */
+@media (min-width: 1024px) {
+   #services-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    } 
+
+    #contact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    #contact .container {
+        grid-column: 1/-1;
+    }
+    #contact form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .bar {
+        width: 50px;
+    }
+}
