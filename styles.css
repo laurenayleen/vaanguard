@@ -172,7 +172,7 @@ h1::before {
 
 }
 
-#innovation h2, #results h2 {
+#innovation h2, #results h2, #contact h2 {
     color: var(--white);
     font-size: 3rem;
     font-weight: bold;
@@ -180,21 +180,23 @@ h1::before {
 }
 
 .request {
-    display: inline-block;
+    display: block;
     background-color: var(--blue);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 6px;
     transition: background-color 0.5s ease, transform 0.5s ease;
-    max-width: 450px;
     align-self: center;
+    opacity: 1;
+    animation: requestFade 1s ease;
+    
 }
 
 .request:hover {
     background-color: var(--red);
-    transform: scale(1.2);
+    transform: translate(0,0) scale(1.4);
 }
 
-#intro h2, #offer h2 {
+#intro h2, #services h2 {
     color: var(--black);
     font-size: 3rem;
     font-weight: bold;
@@ -206,12 +208,14 @@ h1::before {
     line-height: 1.5;
 }
 
-h2, .request {
+h2 {
     opacity: 0;
     transform: translate(0, -20px);
     animation: fadeIn 1s ease forwards;
     animation-delay: 0.5s;
 }
+
+
 
 h3 {
     color: var(--white);
@@ -225,6 +229,17 @@ h3 {
 }
 
 @keyframes fadeIn {
+    to {opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes requestFade {
+    
+    from {
+        opacity: 0;
+        transform: translate(0, -20px);
+    }
     to {opacity: 1;
         transform: translate(0, 0);
     }
@@ -319,12 +334,54 @@ th, td {
         height: var(--height);
     }
 }
+
+
 /* ADD ANIMATION ON stepUp for 1s ease-in-out forwards */
 .bar {
     animation: stepUp 1s ease-in-out forwards;
 }
 
+#contact {
+    background: var(--black);
+    color: var(--white);
 
+}
+#contact p {
+    padding-bottom: 1rem;
+    line-height: 1.5;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact textarea {
+    width: 100%;
+    border: 2px solid var(--blue);
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#contact textarea {
+    padding: 2rem 1rem;
+}
+
+#contact input[type="submit"]{
+    display: block;
+    padding: 1rem;
+    color: var(--white);
+    background-color: var(--blue);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+    text-align: center;
+    width: 100%;
+    font-family: 'Inter';
+    border-radius: 10px;
+
+}
+
+#contact input[type="submit"]:hover{
+    background-color: var(--red);
+    transform: scale(1.1);
+}
 /* MEDIA QUERIES (MEDIUM) */ 
 
     #results {
