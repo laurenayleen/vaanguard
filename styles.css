@@ -170,15 +170,43 @@ h1 {
     line-height: 1.5;
 }
 
+h2:not(#innovation h2) {
+    opacity: 0;
+    transform: translate(0, -20px);
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
 h3 {
     color: var(--white);
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translate(0, -20px);
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    to {opacity: 1;
+        transform: translate(0, 0);
+    }
 }
 
 #consulting, #high-impact, #business, #digital, #exclusive, #corporate {
     background-color: var(--blue);
-    border-radius: 8px;
-    padding: 10px;
+    border-radius: 9px;
+    padding: 1rem;
+    line-height: 1.5;
+    transition: transform 0.5s ease;
 }
+
+#consulting:hover, #high-impact:hover, #business:hover, #digital:hover, #exclusive:hover, #corporate:hover {
+    transform: translate(0, -10px);
+}
+
+
 
 #services-grid {
     display: grid;
